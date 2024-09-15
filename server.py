@@ -41,9 +41,7 @@ def login():
         db = get_db()
         cursor = db.cursor()
         cursor.execute('SELECT * FROM users WHERE name_user = %s', (name_user,))
-        user = cursor.fetchone()
-        print(user)
-        print(user["password"])
+        user = cursor.fetchone()        
 
         if user and check_password_hash(user["password"], password):
             session['user_id'] = user["id"]
